@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="initial_element">Elemento 1 di 10</string>
+    <string name="app_name">App di ginnastica</string>
+    <string name="screen_title">App di ginnastica</string>
+    <string name="current_score">Punteggio attuale</string>
+    <string name="element_number">Elemento %1$d di 10</string>
+    <string name="perform">Esegui</string>
+    <string name="deduction">Penalità</string>
+    <string name="reset">Ricomincia</string>
+    <string name="activity_history">Cronologia attività</string>
+    <string name="no_actions_yet">Nessuna azione ancora</string>
+    <string name="routine_complete">Routine completata!</string>
+    <string name="deduction_taken">Penalità applicata. Ricomincia per ripartire.</string>
+    <string name="score_changed">Punteggio aggiornato</string>
+    <string name="history_element_performed">Elemento %1$d eseguito. Punteggio: %2$d</string>
+    <string name="history_deduction_applied">Penalità applicata. Punteggio: %1$d</string>
+    <string name="history_routine_reset">Routine azzerata</string>
+</resources>

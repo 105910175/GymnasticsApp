@@ -53,6 +53,15 @@ class MainActivity : AppCompatActivity() {
             score = savedInstanceState.getInt("score", 0)
             elementNumber = savedInstanceState.getInt("elementNumber", 1)
             deductionTaken = savedInstanceState.getBoolean("deductionTaken", false)
+            savedInstanceState.getStringArrayList("activityHistory")?.let {
+                activityHistory.addAll(it)
+            }
+        }
+
+        historyText.text = if (activityHistory.isEmpty()) {
+            getString(R.string.no_actions_yet)
+        } else {
+            activityHistory.joinToString("\n")
         }
 
         performButton.setOnClickListener {
@@ -67,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
                 score = (score + points).coerceAtMost(20)
 
-                recordAction("Element $elementNumber performed. Score: $score")
+                recordAction(getString(R.string.history_element_performed, elementNumber, score))
 
                 elementNumber++
                 updateDisplay()
@@ -75,13 +84,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         deductionButton.setOnClickListener {
-            if (elementNumber > 1 && elementNumber <= 10 &&
-                !deductionTaken
-            ) {
+            if (elementNumber in 2..10 && !deductionTaken) {
                 score = (score - 2).coerceAtLeast(0)
                 deductionTaken = true
 
-                recordAction("Deduction applied. Score: $score")
+                recordAction(getString(R.string.history_deduction_applied, score))
 
                 updateDisplay()
             }
@@ -92,8 +99,8 @@ class MainActivity : AppCompatActivity() {
             elementNumber = 1
             deductionTaken = false
 
-            recordAction("Routine reset")
-
+            activityHistory.clear()
+            recordAction(getString(R.string.history_routine_reset))
             updateDisplay()
         }
 
@@ -105,19 +112,19 @@ class MainActivity : AppCompatActivity() {
 
         when {
             elementNumber > 10 -> {
-                elementText.text = "Routine complete!"
+                elementText.text = getString(R.string.routine_complete)
                 performButton.isEnabled = false
                 deductionButton.isEnabled = false
             }
 
             deductionTaken -> {
-                elementText.text = "Deduction taken. Reset to restart."
+                elementText.text = getString(R.string.deduction_taken)
                 performButton.isEnabled = false
                 deductionButton.isEnabled = false
             }
 
             else -> {
-                elementText.text = "Element $elementNumber of 10"
+                elementText.text = getString(R.string.element_number, elementNumber)
                 performButton.isEnabled = true
                 deductionButton.isEnabled = elementNumber > 1
             }
@@ -137,6 +144,10 @@ class MainActivity : AppCompatActivity() {
         outState.putInt("score", score)
         outState.putInt("elementNumber", elementNumber)
         outState.putBoolean("deductionTaken", deductionTaken)
+        outState.putStringArrayList(
+            "activityHistory",
+            ArrayList(activityHistory)
+        )
 
         super.onSaveInstanceState(outState)
     }

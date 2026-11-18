@@ -1,3 +1,21 @@
-    <resources>
-    <string name="app_name">GymnasticApp</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="initial_element">Element 1 of 10</string>
+    <string name="app_name">Gymnastics App</string>
+    <string name="screen_title">Gymnastics App</string>
+    <string name="current_score">Current Score</string>
+    <string name="element_number">Element %1$d of 10</string>
+    <string name="perform">Perform</string>
+    <string name="deduction">Deduction</string>
+    <string name="reset">Reset</string>
+    <string name="activity_history">Activity History</string>
+    <string name="no_actions_yet">No actions yet</string>
+    <string name="routine_complete">Routine complete!</string>
+    <string name="deduction_taken">Deduction taken. Reset to restart.</string>
+    <string name="score_changed">Score updated</string>
+    <string name="history_element_performed">Element %1$d performed. Score: %2$d</string>
+    <string name="history_deduction_applied">Deduction applied. Score: %1$d</string>
+    <string name="history_routine_reset">Routine reset</string>
+    <string name="deduction_available">Deduction available</string>
 </resources>
+
