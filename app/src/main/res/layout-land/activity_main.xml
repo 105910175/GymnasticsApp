@@ -124,7 +124,7 @@
                     android:scaleType="fitCenter" />
 
             </LinearLayout>
-
         </ScrollView>
 
+    </LinearLayout>
 </LinearLayout>
